@@ -38,6 +38,8 @@ npm run start:prod
 
 `DATABASE_URL` задает строку подключения; `PORT` задает порт приложения (по умолчанию `3000`).
 
+В VS Code API можно запустить задачей **Run Portfolio API (production)**. После старта откройте <http://localhost:3000/graphql> для Apollo Sandbox.
+
 ## GraphQL
 
 ```graphql
