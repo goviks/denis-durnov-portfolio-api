@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Portfolio API (development)",
+      "label": "Run Portfolio website (development)",
       "type": "shell",
       "command": "npm.cmd",
       "args": ["run", "start:dev"],

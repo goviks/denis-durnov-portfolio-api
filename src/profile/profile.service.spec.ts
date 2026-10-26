@@ -20,4 +20,62 @@ describe("ProfileService", () => {
       },
     });
   });
+
+  it("decodes experience achievements into GraphQL string arrays", async () => {
+    const profile = {
+      id: "denis-durnov",
+      name: "Denis Durnov",
+      description: "Admin",
+      links: [],
+      skills: [],
+      experience: [
+        {
+          id: "experience-1",
+          company: "Example",
+          position: "Developer",
+          period: "2025",
+          achievements: JSON.stringify(["Built a portfolio"]),
+          profileId: "denis-durnov",
+        },
+      ],
+      projects: [],
+    };
+    const prisma = {
+      profile: { findUnique: jest.fn().mockResolvedValue(profile) },
+    } as unknown as PrismaService;
+    const service = new ProfileService(prisma);
+
+    await expect(service.findProfile()).resolves.toMatchObject({
+      experience: [{ achievements: ["Built a portfolio"] }],
+    });
+  });
+
+  it("reports invalid stored achievements", async () => {
+    const profile = {
+      id: "denis-durnov",
+      name: "Denis Durnov",
+      description: "Admin",
+      links: [],
+      skills: [],
+      experience: [
+        {
+          id: "experience-1",
+          company: "Example",
+          position: "Developer",
+          period: "2025",
+          achievements: "not-json",
+          profileId: "denis-durnov",
+        },
+      ],
+      projects: [],
+    };
+    const prisma = {
+      profile: { findUnique: jest.fn().mockResolvedValue(profile) },
+    } as unknown as PrismaService;
+    const service = new ProfileService(prisma);
+
+    await expect(service.findProfile()).rejects.toThrow(
+      "Stored experience achievements are not valid JSON",
+    );
+  });
 });

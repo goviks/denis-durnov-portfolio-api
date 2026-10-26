@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model Profile {
-  id          String       @id
+  id          String        @id
   name        String
   description String
   links       ProfileLink[]
@@ -37,13 +37,13 @@ model Skill {
 }
 
 model Experience {
-  id           String   @id
+  id           String  @id
   company      String
   position     String
   period       String
-  achievements String[]
+  achievements String
   profileId    String
-  profile      Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profile      Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
   @@index([profileId])
 }
