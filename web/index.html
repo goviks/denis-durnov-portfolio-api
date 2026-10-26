@@ -5,151 +5,327 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Портфолио Дениса Дурнова: опыт, навыки и проекты."
+      content="Денис Дурнов — специалист технической поддержки и начинающий разработчик. Опыт, навыки и проекты."
     />
-    <meta name="theme-color" content="#f5f3ed" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Денис Дурнов — портфолио" />
+    <meta
+      property="og:description"
+      content="Опыт в технической поддержке, интерес к разработке и автоматизации."
+    />
     <title>Денис Дурнов — портфолио</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
+    <script src="/config.js"></script>
     <script src="/app.js" defer></script>
   </head>
   <body>
-    <header class="topbar">
-      <a class="wordmark" href="#" aria-label="На главную">ДД<span>.</span></a>
-      <nav class="navigation" aria-label="Основная навигация">
-        <a href="#about">Обо мне</a>
-        <a href="#experience">Опыт</a>
-        <a href="#skills">Навыки</a>
-        <a href="#projects">Проекты</a>
-      </nav>
-      <a class="contact-link" href="#contacts"
-        >Связаться <span aria-hidden="true">↗</span></a
-      >
-    </header>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="wordmark" href="#top" aria-label="Денис Дурнов — наверх">
+          <span class="wordmark-mark">ДД</span>
+          <span class="wordmark-divider"></span>
+          <span class="wordmark-caption">ПОРТФОЛИО<br />2026</span>
+        </a>
+        <nav class="navigation" aria-label="Основная навигация">
+          <a href="#about">Обо мне</a>
+          <a href="#experience">Опыт</a>
+          <a href="#skills">Навыки</a>
+          <a href="#projects">Проекты</a>
+        </nav>
+        <a class="contact-link" href="#contacts">
+          <span>Связаться</span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </header>
 
-    <main>
-      <section
-        class="hero section-wrap"
-        id="about"
-        aria-labelledby="hero-title"
-      >
-        <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="status-dot"></span> ОТКРЫТ К ИНТЕРЕСНЫМ ЗАДАЧАМ
-          </p>
-          <h1 id="hero-title">
-            <span id="profile-name">Денис Дурнов</span
-            ><span class="accent">.</span>
-          </h1>
-          <p class="hero-description" id="profile-description">
-            Специалист технической поддержки и начинающий разработчик. Люблю
-            разбираться в сложных задачах и превращать идеи в работающие
-            решения.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-dark" href="#projects"
-              >Мои проекты <span aria-hidden="true">↘</span></a
-            >
-            <a class="text-link" href="#experience">Посмотреть опыт</a>
-          </div>
-          <div class="hero-meta">
-            <span>МОСКВА, РОССИЯ</span>
-            <span>РАЗРАБОТКА · ПОДДЕРЖКА · АВТОМАТИЗАЦИЯ</span>
-          </div>
-        </div>
-        <div class="hero-art" aria-label="Инициалы Дениса Дурнова" role="img">
-          <div class="art-orbit orbit-one"></div>
-          <div class="art-orbit orbit-two"></div>
-          <div class="art-sun"></div>
-          <span class="art-initials">ДД</span>
-          <span class="art-caption">DIGITAL<br />CRAFT &amp; CARE</span>
-          <span class="art-index">01 / 04</span>
-        </div>
-        <a class="scroll-note" href="#experience"
-          ><span></span> ПРОКРУТИТЕ ВНИЗ</a
+      <main id="top">
+        <section
+          class="hero section-wrap"
+          id="about"
+          aria-labelledby="hero-title"
         >
-      </section>
-
-      <section class="section-wrap content-section" id="experience">
-        <div class="section-heading">
-          <p class="eyebrow">ПУТЬ И ПРАКТИКА</p>
-          <h2>Опыт работы<span class="accent">.</span></h2>
-          <p class="section-intro">
-            Каждая роль — новый взгляд на технологии и людей.
-          </p>
-        </div>
-        <div class="experience-list" id="experience-list" aria-live="polite">
-          <p class="loading-note">Загружаем опыт...</p>
-        </div>
-      </section>
-
-      <section class="skills-band" id="skills">
-        <div class="section-wrap skills-layout">
-          <div class="section-heading">
-            <p class="eyebrow">ИНСТРУМЕНТЫ И ПОДХОД</p>
-            <h2>Навыки<span class="accent">.</span></h2>
-            <p class="section-intro">
-              Постоянно учусь и расширяю технический кругозор.
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="eyebrow-line"></span> ТЕХНОЛОГИИ · ЛЮДИ · РЕШЕНИЯ
             </p>
+            <h1 id="hero-title">
+              <span id="profile-name">Денис Дурнов</span
+              ><span class="gold-dot">.</span>
+            </h1>
+            <p class="hero-role">
+              Техническая поддержка <span>и</span> разработка
+            </p>
+            <p class="hero-description" id="profile-description">
+              Специалист технической поддержки с опытом в Яндексе и Т-Банке.
+              Изучаю программирование и автоматизацию.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-gold" href="#experience">
+                Мой опыт <span aria-hidden="true">↘</span>
+              </a>
+              <a class="text-link" href="#projects"
+                >Смотреть проекты <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="hero-location">
+              <span class="location-mark" aria-hidden="true"></span>
+              <span>ОПЫТ И НАВЫКИ</span>
+              <span class="location-divider"></span>
+              <span>ПРОЕКТЫ И РАЗВИТИЕ</span>
+            </div>
           </div>
-          <div class="skill-list" id="skill-list" aria-label="Список навыков">
-            <p class="loading-note">Загружаем навыки...</p>
-          </div>
-        </div>
-      </section>
 
-      <section
-        class="section-wrap content-section projects-section"
-        id="projects"
-      >
-        <div class="section-heading">
-          <p class="eyebrow">ИЗ ИДЕИ В РЕЗУЛЬТАТ</p>
-          <h2>Избранные проекты<span class="accent">.</span></h2>
-          <p class="section-intro">
-            Практика, эксперименты и решения, которыми хочется поделиться.
-          </p>
-        </div>
-        <div class="project-grid" id="project-list" aria-live="polite">
-          <p class="loading-note">Загружаем проекты...</p>
-        </div>
-      </section>
-
-      <section class="contact-band" id="contacts">
-        <div class="section-wrap contact-layout">
-          <div>
-            <p class="eyebrow">ЕСТЬ ИДЕЯ ИЛИ ПРЕДЛОЖЕНИЕ?</p>
-            <h2>Давайте обсудим<span class="accent">.</span></h2>
-          </div>
           <div
-            class="contact-list"
-            id="contact-list"
-            aria-label="Контактные ссылки"
+            class="hero-visual"
+            aria-label="Авторская золотая монограмма ДД"
+            role="img"
           >
-            <p class="loading-note">Загружаем контакты...</p>
+            <div class="visual-frame"></div>
+            <div class="visual-sun"></div>
+            <div class="visual-ring visual-ring-outer"></div>
+            <div class="visual-ring visual-ring-inner"></div>
+            <span class="visual-star visual-star-one" aria-hidden="true"
+              >✳</span
+            >
+            <span class="visual-star visual-star-two" aria-hidden="true"
+              >✳</span
+            >
+            <span class="visual-monogram">ДД</span>
+            <span class="visual-note">DIGITAL<br />CRAFT &amp; CARE</span>
+            <span class="visual-index">01 — 04</span>
           </div>
+          <a class="scroll-note" href="#experience">
+            <span class="scroll-line"></span> ЛИСТАЙТЕ НИЖЕ
+          </a>
+        </section>
+
+        <section class="quick-facts section-wrap" aria-label="Факты профиля">
+          <div class="fact-item">
+            <span class="fact-number" id="experience-count">03</span>
+            <span class="fact-label">места работы</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-number" id="skill-count">14</span>
+            <span class="fact-label">навыков и интересов</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-number" id="project-count">02</span>
+            <span class="fact-label">проекта на GitHub</span>
+          </div>
+          <p class="facts-note">Опыт в поддержке.<br />Интерес к созданию.</p>
+        </section>
+
+        <section
+          class="section-wrap content-section about-section"
+          aria-labelledby="approach-title"
+        >
+          <div class="section-kicker">
+            <span class="section-number">01</span>
+            <span class="eyebrow">ПОДХОД</span>
+          </div>
+          <div class="about-layout">
+            <h2 id="approach-title">
+              Сначала понять.<br /><span>Затем решить.</span>
+            </h2>
+            <div class="about-copy">
+              <p>
+                Мой опыт начинается с поддержки людей и сложных технических
+                вопросов. Сейчас я развиваюсь в программировании и автоматизации
+                — чтобы не только находить проблему, но и создавать решение.
+              </p>
+              <a class="inline-link" href="#contacts"
+                >Познакомиться ближе <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+          <div class="approach-cards">
+            <article class="approach-card">
+              <span class="approach-index">A / 01</span>
+              <span class="approach-icon" aria-hidden="true">⌕</span>
+              <h3>Разобраться</h3>
+              <p>
+                Диагностика, внимательность к деталям и поиск причины, а не
+                только симптома.
+              </p>
+            </article>
+            <article class="approach-card">
+              <span class="approach-index">A / 02</span>
+              <span class="approach-icon" aria-hidden="true">↗</span>
+              <h3>Объяснить</h3>
+              <p>
+                Технологии имеют смысл, когда помогают людям и понятны тем, кто
+                ими пользуется.
+              </p>
+            </article>
+            <article class="approach-card">
+              <span class="approach-index">A / 03</span>
+              <span class="approach-icon" aria-hidden="true">✳</span>
+              <h3>Улучшить</h3>
+              <p>
+                Интерес к автоматизации и программированию — следующий шаг в
+                моём профессиональном пути.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section
+          class="experience-section"
+          id="experience"
+          aria-labelledby="experience-title"
+        >
+          <div class="section-wrap experience-wrap">
+            <div class="section-kicker">
+              <span class="section-number">02</span>
+              <span class="eyebrow">ОПЫТ И ПРАКТИКА</span>
+            </div>
+            <div class="section-heading">
+              <h2 id="experience-title">
+                Путь в работе<span class="gold-dot">.</span>
+              </h2>
+              <p class="section-intro">
+                Три команды, разные задачи, один фокус — помогать и улучшать.
+              </p>
+            </div>
+            <div
+              class="experience-list"
+              id="experience-list"
+              aria-live="polite"
+            >
+              <p class="loading-note">Загружаем опыт...</p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="skills-section"
+          id="skills"
+          aria-labelledby="skills-title"
+        >
+          <div class="section-wrap skills-layout">
+            <div class="skills-intro">
+              <div class="section-kicker">
+                <span class="section-number">03</span>
+                <span class="eyebrow">КОМПЕТЕНЦИИ</span>
+              </div>
+              <h2 id="skills-title">
+                Знания<br />в движении<span class="gold-dot">.</span>
+              </h2>
+              <p class="section-intro">
+                Техническая база и навыки взаимодействия — список отражает мой
+                текущий профиль.
+              </p>
+            </div>
+            <div class="skills-content">
+              <p class="skills-label">НАВЫКИ И ОБЛАСТИ ИНТЕРЕСА</p>
+              <div
+                class="skill-list"
+                id="skill-list"
+                aria-label="Список навыков"
+              >
+                <p class="loading-note">Загружаем навыки...</p>
+              </div>
+              <p class="skills-footnote">
+                <span aria-hidden="true">✳</span> Учусь, практикуюсь, расширяю
+                кругозор.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="section-wrap projects-section"
+          id="projects"
+          aria-labelledby="projects-title"
+        >
+          <div class="section-kicker">
+            <span class="section-number">04</span>
+            <span class="eyebrow">ПРАКТИКА И ЭКСПЕРИМЕНТЫ</span>
+          </div>
+          <div class="projects-heading">
+            <div>
+              <h2 id="projects-title">
+                Сделано<br /><span>с интересом.</span>
+              </h2>
+              <p class="section-intro">Проекты и код — на GitHub.</p>
+            </div>
+            <a
+              class="text-link github-link"
+              href="https://github.com/goviks"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Все репозитории <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="project-grid" id="project-list" aria-live="polite">
+            <p class="loading-note">Загружаем проекты...</p>
+          </div>
+        </section>
+
+        <section
+          class="contact-section"
+          id="contacts"
+          aria-labelledby="contact-title"
+        >
+          <div class="contact-decoration" aria-hidden="true">ДД</div>
+          <div class="section-wrap contact-layout">
+            <div class="contact-copy">
+              <div class="section-kicker">
+                <span class="section-number">05</span>
+                <span class="eyebrow">СЛЕДУЮЩИЙ ШАГ</span>
+              </div>
+              <h2 id="contact-title">
+                Есть тема<br />для разговора<span class="gold-dot">?</span>
+              </h2>
+              <p>
+                Буду рад профессиональному знакомству и интересным предложениям.
+              </p>
+            </div>
+            <div
+              class="contact-list"
+              id="contact-list"
+              aria-label="Контактные ссылки"
+            >
+              <p class="loading-note">Загружаем контакты...</p>
+            </div>
+          </div>
+        </section>
+
+        <div
+          class="load-error section-wrap"
+          id="load-error"
+          role="alert"
+          hidden
+        >
+          <p>
+            Не удалось загрузить данные профиля. Проверьте подключение и
+            повторите попытку.
+          </p>
+          <button class="button button-gold" id="retry-button" type="button">
+            Попробовать снова
+          </button>
         </div>
-      </section>
+      </main>
 
-      <div class="load-error" id="load-error" role="alert" hidden>
-        <p>Не получилось загрузить данные профиля.</p>
-        <button class="button button-dark" id="retry-button" type="button">
-          Попробовать снова
-        </button>
-      </div>
-    </main>
-
-    <footer class="footer section-wrap">
-      <a class="wordmark" href="#" aria-label="Наверх">ДД<span>.</span></a>
-      <p>
-        © <span id="current-year"></span> Денис Дурнов. Сделано с интересом к
-        деталям.
-      </p>
-      <a class="back-to-top" href="#">НАВЕРХ ↑</a>
-    </footer>
+      <footer class="footer section-wrap">
+        <a class="wordmark footer-wordmark" href="#top" aria-label="Наверх">
+          <span class="wordmark-mark">ДД</span
+          ><span class="wordmark-divider"></span>
+          <span class="wordmark-caption">ДЕНИС ДУРНОВ</span>
+        </a>
+        <p>
+          © <span id="current-year"></span> Денис Дурнов. Сделано с вниманием к
+          деталям.
+        </p>
+        <a class="back-to-top" href="#top">НАВЕРХ ↑</a>
+      </footer>
+    </div>
   </body>
 </html>

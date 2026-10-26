@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: denis-durnov-portfolio
+    runtime: node
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /
+    disk:
+      name: portfolio-data
+      mountPath: /opt/render/project/src/prisma
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: DATABASE_URL
+        value: file:/opt/render/project/src/prisma/dev.db
+      - key: PORT
+        value: 10000
+      - key: CORS_ORIGIN
+        value: http://localhost:3000

@@ -49,11 +49,13 @@ model Experience {
 }
 
 model Project {
-  id        String  @id
-  name      String
-  url       String
-  profileId String
-  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  id          String  @id
+  name        String
+  description String?
+  url         String
+  demoUrl     String?
+  profileId   String
+  profile     Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
   @@index([profileId])
 }

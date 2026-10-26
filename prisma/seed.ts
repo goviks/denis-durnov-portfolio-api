@@ -6,7 +6,7 @@ const profileId = "denis-durnov";
 
 const profile = {
   id: profileId,
-  name: "Denis Durnov",
+  name: "Денис Дурнов",
   description:
     "Специалист технической поддержки с опытом в Яндексе и Т-Банке. Изучаю программирование и автоматизацию.",
 };
@@ -51,13 +51,18 @@ const projects = [
   {
     id: "portfolio-api",
     name: "Portfolio API",
+    description:
+      "Сайт-портфолио с адаптивным фронтендом и GraphQL API на NestJS.",
     url: "https://github.com/goviks/denis-durnov-portfolio-api",
     profileId,
   },
   {
     id: "workspace-ultra",
     name: "Workspace Ultra",
+    description:
+      "Персональная Kanban-доска для планирования задач с хранением данных в браузере.",
     url: "https://github.com/goviks/workspace-ultra",
+    demoUrl: "https://goviks.github.io/workspace-ultra/",
     profileId,
   },
 ];

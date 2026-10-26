@@ -11,6 +11,7 @@
   "scripts": {
     "prebuild": "node scripts/ensure-env.cjs",
     "build": "prisma generate && nest build && node scripts/copy-web.cjs",
+    "build:vercel": "node scripts/build-vercel.cjs",
     "format": "prettier --write \"src/**/*.ts\" \"prisma/**/*.ts\"",
     "prestart": "node scripts/ensure-env.cjs",
     "start": "npm run db:prepare && node scripts/copy-web.cjs && nest start",
