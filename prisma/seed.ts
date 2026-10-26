@@ -46,6 +46,21 @@ const skills = [
   profileId,
 }));
 
+const projects = [
+  {
+    id: "portfolio-api",
+    name: "Portfolio API",
+    url: "https://github.com/goviks/denis-durnov-portfolio-api",
+    profileId,
+  },
+  {
+    id: "workspace-ultra",
+    name: "Workspace Ultra",
+    url: "https://github.com/goviks/workspace-ultra",
+    profileId,
+  },
+];
+
 const experience = [
   {
     id: "ministry-of-defence-2025",
@@ -102,6 +117,14 @@ async function seed(): Promise<void> {
       where: { id: skill.id },
       create: skill,
       update: skill,
+    });
+  }
+
+  for (const project of projects) {
+    await prisma.project.upsert({
+      where: { id: project.id },
+      create: project,
+      update: project,
     });
   }
 

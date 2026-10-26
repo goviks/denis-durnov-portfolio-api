@@ -7,6 +7,9 @@ import { SkillModel } from "./skill.model";
 @ObjectType("Profile")
 export class ProfileModel {
   @Field()
+  id!: string;
+
+  @Field()
   name!: string;
 
   @Field()
