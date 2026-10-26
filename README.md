@@ -1,107 +1,115 @@
-# Денис Дурнов — full-stack портфолио
+# Денис Дурнов — портфолио
 
-Адаптивное портфолио в тёплой айвори-золотой палитре: подтверждённый опыт, навыки, проекты и ссылки. NestJS GraphQL API и фронтенд работают вместе на Node.js; локально используется SQLite. Контейнеры и Docker не нужны.
+Персональный сайт-портфолио с адаптивным интерфейсом, разделами об опыте, навыках и проектах, а также контактными ссылками. Проект включает фронтенд, GraphQL API на NestJS и базу SQLite. Для локального запуска и публикации на GitHub Pages Docker не требуется.
 
-## Быстрый запуск в Windows
+## Сайт и контакты
 
-Нужны Node.js 22.12+ и npm 10+. Версия Node указана в `.nvmrc`. В Windows PowerShell используйте `npm.cmd`, чтобы не зависеть от системной политики запуска PowerShell-скриптов.
+- **Портфолио:** [goviks.github.io/denis-durnov-portfolio-api](https://goviks.github.io/denis-durnov-portfolio-api/)
+- **GitHub:** [github.com/goviks](https://github.com/goviks)
+- **Telegram:** [@goviks](https://t.me/goviks)
+- **LinkedIn:** [linkedin.com/in/denis-durnov-229b65444](https://www.linkedin.com/in/denis-durnov-229b65444/)
 
-Откройте PowerShell в папке проекта и выполните:
+## Технологии
+
+- **Фронтенд:** HTML, CSS и JavaScript без отдельного фреймворка.
+- **Сервер и API:** Node.js, NestJS и GraphQL.
+- **Данные:** Prisma и SQLite.
+- **Публикация:** GitHub Pages для статического сайта; Render — для приложения с API.
+
+## Локальный запуск в Windows
+
+Требуются Node.js 22.15 или новее в пределах версии 26 и npm 10 или новее. Для Windows PowerShell используйте `npm.cmd`: это позволяет запускать npm независимо от политики выполнения PowerShell-сценариев.
+
+В PowerShell из каталога проекта выполните:
 
 ```powershell
 npm.cmd ci
 npm.cmd run start:dev
 ```
 
-При первом запуске проект сам создаст `.env`, SQLite-базу `prisma/dev.db`, применит схему и заполнит её профилем. Откройте:
+При первом запуске приложение создаст `.env`, подготовит локальную SQLite-базу `prisma/dev.db` и загрузит демонстрационный профиль.
 
 - Сайт: <http://localhost:3000>
-- GraphQL API и Apollo Sandbox: <http://localhost:3000/graphql>
+- GraphQL API: <http://localhost:3000/graphql>
 
-Остановить локальный сервер: `Ctrl+C`.
+Остановить сервер можно сочетанием `Ctrl+C`.
 
-Если `.env` уже существует, он сохраняется. Для сброса параметров удалите `.env` и повторите запуск — файл будет создан из `.env.example`.
+Для запуска через VS Code выберите задачу **Run Portfolio website (development)**.
 
-### Запуск в VS Code
-
-Выберите задачу **Run Portfolio website (development)**. Она запускает тот же full-stack проект и автоматически подготавливает базу.
-
-## Production-сборка
-
-Создать production-сборку фронтенда и API и запустить её:
+### Production-сборка
 
 ```powershell
 npm.cmd run build
 npm.cmd run start:prod
 ```
 
-Сборка NestJS копирует веб-файлы в `dist/web`; production-сервер отдаёт сайт и API с одного адреса. Локальные данные сохраняются в `prisma/dev.db` и не попадают в Git.
+Сайт и API будут доступны с одного Node.js-сервера. Локальная база хранится в `prisma/dev.db` и не включается в Git.
 
-## Деплой без Docker
+## Публикация
 
-### Render — сайт и API вместе
+### GitHub Pages
 
-В репозитории есть `render.yaml`. В Render выберите **New → Blueprint**, подключите репозиторий и подтвердите создание сервиса. Blueprint собирает NestJS-приложение на Node.js и подключает постоянный диск для SQLite. Диск Render тарифицируется отдельно; без него локальная SQLite-база на хостинге не переживёт пересоздание сервиса.
+Сайт публикуется автоматически при push в ветку `main` с помощью workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml). На этапе сборки актуальные данные профиля сохраняются в JSON-файл рядом со статическими ресурсами; отдельный сервер для работы опубликованной страницы не требуется.
 
-После первого запуска сайт и GraphQL API будут доступны по одному адресу:
+Адрес опубликованного сайта: [goviks.github.io/denis-durnov-portfolio-api](https://goviks.github.io/denis-durnov-portfolio-api/).
 
-- Сайт: `https://<имя-сервиса>.onrender.com`
-- GraphQL: `https://<имя-сервиса>.onrender.com/graphql`
+### Render
 
-Для одного Render-сервиса CORS не требуется менять. Если отдельно размещаете фронтенд, задайте `CORS_ORIGIN` в настройках Render точным origin Vercel, например `https://portfolio-example.vercel.app`.
+Файл [`render.yaml`](render.yaml) содержит настройки сервиса. В Render выберите **New → Blueprint**, подключите репозиторий и подтвердите создание сервиса. Приложение будет обслуживать сайт и GraphQL API на одном адресе.
 
-### Vercel — статический сайт + API на Render
+Для сохранения SQLite-базы между перезапусками используется постоянный диск Render. Условия и стоимость диска определяются тарифом Render.
 
-Сначала разверните API вместе с сайтом на Render по шагам выше. Затем импортируйте тот же GitHub-репозиторий в Vercel. Vercel обнаружит `vercel.json`; в настройках проекта добавьте переменную окружения `PORTFOLIO_API_URL` со значением адреса Render-сервиса без завершающего слеша, например `https://denis-durnov-portfolio.onrender.com`, после чего запустите новый деплой. Фронтенд на Vercel будет запрашивать `/graphql` у Render API.
+### Vercel
 
-В Render добавьте Vercel origin в `CORS_ORIGIN` (если origin несколько, укажите список через запятую). Базовый запуск не требует Vercel: команда `npm run build:vercel` локально соберёт фронтенд в `dist/vercel`; при сборке на Vercel без `PORTFOLIO_API_URL` сборка завершится явной ошибкой.
+Vercel размещает статический фронтенд, а GraphQL API остаётся на Render:
 
-### GitHub Pages — самостоятельная статическая версия
+1. Разверните приложение на Render.
+2. Импортируйте репозиторий в Vercel.
+3. В переменных среды Vercel укажите `PORTFOLIO_API_URL` — полный URL сервиса Render, без завершающего слеша.
+4. В переменной `CORS_ORIGIN` на Render укажите origin сайта Vercel, например `https://portfolio-example.vercel.app`.
+5. Запустите деплой Vercel.
 
-Workflow `.github/workflows/deploy-pages.yml` при каждом push в `main` собирает страницу из актуального seed-профиля и публикует её в GitHub Pages. Pages версия полностью статическая: отдельный Render сервер и CORS не нужны, так как профиль публикуется как JSON рядом с фронтендом. Исходная база SQLite и GraphQL API продолжают работать при локальном запуске и на Render.
+Параметры статической сборки заданы в [`vercel.json`](vercel.json). Для локальной проверки сборки выполните `npm.cmd run build:vercel`.
 
-Чтобы включить публикацию, разрешите GitHub Actions управлять Pages в настройках репозитория (**Settings → Pages → Build and deployment → Source: GitHub Actions**). После успешного workflow сайт будет доступен по адресу `https://goviks.github.io/denis-durnov-portfolio-api/`.
+## Тесты и сборки
 
-## Проверки
-
-Тесты и production-сборка выполняются без контейнеров:
+Запустить тесты и production-сборку:
 
 ```powershell
 npm.cmd test -- --runInBand
 npm.cmd run build
 ```
 
-Тесты покрывают загрузку профиля, обработку ошибок API и чтение достижений опыта. Сборка статической версии для Vercel проверяется командой:
+Проверить сборку для GitHub Pages или Vercel:
 
 ```powershell
-npm.cmd run build:vercel
 npm.cmd run build:pages
+npm.cmd run build:vercel
 ```
 
-## Стек и структура
-
-- **Фронтенд:** адаптивный HTML/CSS/JavaScript; на Render раздаётся NestJS, на Vercel размещается как статический сайт.
-- **Backend:** NestJS, GraphQL и Apollo Sandbox.
-- **Локальная база:** SQLite — один обычный файл на диске, без серверной службы и контейнеров.
-- **Доступ к данным:** Prisma; команда запуска применяет схему и повторно загружает seed без создания дубликатов.
+## Структура проекта
 
 ```text
+.github/workflows/
+  deploy-pages.yml       публикация на GitHub Pages
 prisma/
-  schema.prisma
-  seed.ts
-src/
-  main.ts              NestJS API и раздача фронтенда
-  profile/             GraphQL resolver, service и модели
-web/
-  index.html           страница портфолио
-  styles.css           адаптивные стили
-  app.js               загрузка данных через GraphQL
-  config.js            локальная конфигурация API
+  schema.prisma          схема базы данных
+  seed.ts                исходные данные профиля
 scripts/
-  ensure-env.cjs       создание локального .env при первом запуске
-  copy-web.cjs         копирование фронтенда в production-сборку
-  build-vercel.cjs     подготовка статики для Vercel
-  build-pages.cjs      сборка автономного сайта для GitHub Pages
+  build-pages.cjs        сборка статического сайта для Pages
+  build-vercel.cjs       сборка фронтенда для Vercel
+  copy-web.cjs           копирование фронтенда в NestJS-сборку
+  ensure-env.cjs         создание .env при первом запуске
+src/
+  main.ts                запуск NestJS, API и раздача фронтенда
+  profile/               GraphQL-resolver, сервис и модели профиля
+web/
+  index.html             структура страницы
+  styles.css             адаптивные стили
+  app.js                 загрузка и отображение данных профиля
+  config.js              конфигурация источника данных
 ```
 
-Исходный код: <https://github.com/goviks/denis-durnov-portfolio-api>.
+## Репозиторий
+
+[github.com/goviks/denis-durnov-portfolio-api](https://github.com/goviks/denis-durnov-portfolio-api)
