@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:17-alpine
+    restart: unless-stopped
     environment:
       POSTGRES_USER: portfolio
       POSTGRES_PASSWORD: portfolio
@@ -15,11 +16,24 @@ services:
 
   api:
     build: .
+    restart: unless-stopped
     environment:
       DATABASE_URL: postgresql://portfolio:portfolio@db:5432/portfolio?schema=public
       PORT: 3000
     ports:
       - "3000:3000"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/graphql').then((response) => process.exit(response.ok ? 0 : 1)).catch(() => process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
     depends_on:
       db:
         condition: service_healthy

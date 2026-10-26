@@ -12,6 +12,14 @@ docker compose up --build
 
 При запуске API ожидает готовности PostgreSQL, применяет схему Prisma и запускает идемпотентный seed. GraphQL endpoint: <http://localhost:3000/graphql>. Для Apollo Sandbox откройте endpoint в браузере; GraphQL Sandbox будет доступен как landing page Apollo Server.
 
+Убедиться, что оба сервиса запущены:
+
+```bash
+docker compose ps
+```
+
+API должен перейти в состояние `healthy`. При каждом push в `main` GitHub Actions также собирает контейнеры, запускает PostgreSQL и API и выполняет проверочный GraphQL-запрос.
+
 Остановить контейнеры:
 
 ```bash
