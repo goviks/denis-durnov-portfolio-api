@@ -1,16 +1,13 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Run Portfolio API (production)",
-			"type": "shell",
-			"command": "npm.cmd",
-			"args": [
-				"run",
-				"start:prod"
-			],
-			"isBackground": true,
-			"problemMatcher": []
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Portfolio API (development)",
+      "type": "shell",
+      "command": "npm.cmd",
+      "args": ["run", "start:dev"],
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
 }
