@@ -56,6 +56,12 @@ npm.cmd run start:prod
 
 В Render добавьте Vercel origin в `CORS_ORIGIN` (если origin несколько, укажите список через запятую). Базовый запуск не требует Vercel: команда `npm run build:vercel` локально соберёт фронтенд в `dist/vercel`; при сборке на Vercel без `PORTFOLIO_API_URL` сборка завершится явной ошибкой.
 
+### GitHub Pages — самостоятельная статическая версия
+
+Workflow `.github/workflows/deploy-pages.yml` при каждом push в `main` собирает страницу из актуального seed-профиля и публикует её в GitHub Pages. Pages версия полностью статическая: отдельный Render сервер и CORS не нужны, так как профиль публикуется как JSON рядом с фронтендом. Исходная база SQLite и GraphQL API продолжают работать при локальном запуске и на Render.
+
+Чтобы включить публикацию, разрешите GitHub Actions управлять Pages в настройках репозитория (**Settings → Pages → Build and deployment → Source: GitHub Actions**). После успешного workflow сайт будет доступен по адресу `https://goviks.github.io/denis-durnov-portfolio-api/`.
+
 ## Проверки
 
 Тесты и production-сборка выполняются без контейнеров:
@@ -69,6 +75,7 @@ npm.cmd run build
 
 ```powershell
 npm.cmd run build:vercel
+npm.cmd run build:pages
 ```
 
 ## Стек и структура
@@ -94,6 +101,7 @@ scripts/
   ensure-env.cjs       создание локального .env при первом запуске
   copy-web.cjs         копирование фронтенда в production-сборку
   build-vercel.cjs     подготовка статики для Vercel
+  build-pages.cjs      сборка автономного сайта для GitHub Pages
 ```
 
 Исходный код: <https://github.com/goviks/denis-durnov-portfolio-api>.

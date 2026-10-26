@@ -1,1 +1,1 @@
-window.PORTFOLIO_CONFIG = Object.freeze({ apiUrl: "" });
+window.PORTFOLIO_CONFIG = Object.freeze({ apiUrl: "", profileUrl: "" });

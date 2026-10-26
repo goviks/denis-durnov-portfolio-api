@@ -28,6 +28,7 @@ const profileQuery = `
 
 const apiBaseUrl = (window.PORTFOLIO_CONFIG?.apiUrl || "").replace(/\/+$/, "");
 const apiUrl = `${apiBaseUrl}/graphql`;
+const profileUrl = window.PORTFOLIO_CONFIG?.profileUrl || "";
 const errorPanel = document.querySelector("#load-error");
 const retryButton = document.querySelector("#retry-button");
 document.querySelector("#current-year").textContent = new Date().getFullYear();
@@ -200,11 +201,13 @@ async function loadProfile() {
   retryButton.disabled = true;
 
   try {
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ query: profileQuery }),
-    });
+    const response = profileUrl
+      ? await fetch(profileUrl)
+      : await fetch(apiUrl, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ query: profileQuery }),
+        });
     if (!response.ok) {
       throw new Error(`Сервер ответил с ошибкой (${response.status})`);
     }
@@ -213,11 +216,11 @@ async function loadProfile() {
     if (result.errors?.length) {
       throw new Error(result.errors.map((error) => error.message).join("; "));
     }
-    if (!result.data?.profile) {
+    const profile = profileUrl ? result.profile : result.data?.profile;
+    if (!profile) {
       throw new Error("Профиль не найден");
     }
 
-    const profile = result.data.profile;
     document.querySelector("#profile-name").textContent = profile.name;
     document.querySelector("#profile-description").textContent =
       profile.description;
